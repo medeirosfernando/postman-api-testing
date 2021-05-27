@@ -101,6 +101,50 @@
 				"description": "Consult a inexistent movie and returning a message Error getting data."
 			},
 			"response": []
+		},
+		{
+			"name": "get movie with incorrect ID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Check result with a incorrect IMDb ID\", () => {",
+							"    var imdb = pm.response.json();",
+							"    pm.expect(imdb).to.have.property(\"Response\", \"False\")",
+							"    pm.expect(imdb).to.have.property(\"Error\", \"Incorrect IMDb ID.\")",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}?i={{id_incorrect}}&apikey={{api_key}}",
+					"host": [
+						"{{url}}"
+					],
+					"query": [
+						{
+							"key": "i",
+							"value": "{{id_incorrect}}"
+						},
+						{
+							"key": "apikey",
+							"value": "{{api_key}}"
+						}
+					]
+				},
+				"description": "Consult a inexistent movie and returning a message Error getting data."
+			},
+			"response": []
 		}
 	]
 }
