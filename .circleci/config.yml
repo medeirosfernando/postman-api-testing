@@ -6,6 +6,9 @@ jobs:
     executor: newman/postman-newman-docker
     steps:
       - checkout
+      - store_test_results:
+          path: test-results
       - newman/newman-run:
           collection: ./Filmes.postman_collection.json
           environment: ./OMDb-API.postman_environment.json
+      
