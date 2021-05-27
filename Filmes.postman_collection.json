@@ -98,7 +98,7 @@
 						}
 					]
 				},
-				"description": "Consult a film returning the title, year and language of the same."
+				"description": "Consult a inexistent movie and returning a message Error getting data."
 			},
 			"response": []
 		}
